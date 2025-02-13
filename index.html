@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<!-- PROGRAM GOAL: IMPLEMENT A PRICE CALCULATOR FOR JOE'S HOTDOG STAND -->
+    <h1>Joe's Hotdog Stand</h1>
+
+    <script>
+        //Variables to store food prices
+        let HDOGS_P = 4.99; 
+        let FRENCHFRIES_P =  3.99; 
+        let DRINKS_P = 1.79;
+
+        //Special rounding function to edit my prices
+        function roundandformat(price){
+            rounded_p = String(Math.round(price*100)/100); 
+            
+            if(rounded_p.includes('.')){ 
+                if (rounded_p.length - rounded_p.indexOf('.') == 2){ 
+                    rounded_p = rounded_p + "0";
+
+                }
+            } else { 
+                rounded_p = rounded_p + ".00";
+            
+            }
+            return rounded_p
+        }
+
+        //Show money function to display prices
+        function showMoney(){ 
+            format_HDOGS_P = roundandformat(HDOGS_P);
+            format_FRENCHFRIES_P = roundandformat(FRENCHFRIES_P); 
+            format_DRINKS_P = roundandformat(DRINKS_P);
+
+            document.write("HELLO! HERE ARE OUR PRICES: </br>")
+            document.write("Price per hotdog:  $" + format_HDOGS_P + "</br>");
+            document.write("Price per french fries:  $" + format_FRENCHFRIES_P  + "</br>"); 
+            document.write("Price per drink :  $" + format_DRINKS_P + "</br> </br>");
+
+        }
+        //Run show money
+        showMoney();
+
+        //Get number of orders
+        let numDogs = prompt("How many hotdogs do you want?");
+        let numFries = prompt("How many fries do you want?");
+        let numSoda = prompt("How many sodas do you want?");
+
+        //Print number of each item ordered 
+        document.write("NUMBER OF EACH ITEM ORDERED: </br>")
+        document.write("Number of hot dogs: " + numDogs +"</br>" );
+        document.write("Number of french fries: " + numFries + "</br>" );
+        document.write("Number of sodas: " + numSoda + "</br> </br>" );
+
+        //Find item individual sub_totals
+        let dogs_total = numDogs * HDOGS_P ; 
+        let fries_total = numFries * FRENCHFRIES_P; 
+        let soda_total = numSoda * DRINKS_P;
+
+        //Print subtotals
+        document.write("SUBTOTALS BEFORE DISCOUNT: </br>")
+        document.write("Subtotal of hot dogs: $" + dogs_total +"</br>" );
+        document.write("Subtotal of french fries: $" + fries_total + "</br>" );
+        document.write("Subtotal  of sodas: $" + soda_total + "</br> </br>" );
+
+        //Find and print total subtotal 
+        let sub_total = dogs_total + fries_total + soda_total; 
+        document.write("Total before discount: $" + roundandformat(final_sub_total) + "</br> </br>" );
+
+        //Find discount if price total  is more than 30. 
+        if(sub_total >= 30){ 
+            //Implementing a 10% discount
+            discounted_total = sub_total - (0.1 * sub_total);
+            sub_total = discounted_total; 
+        }
+        document.write("Total before discount: $" + roundandformat(sub_total) + "</br> </br>");
+
+        //Tax the total by 6.25%
+        let PERCENT_TAX = 6.25;
+        let grand_total = sub_total - (PERCENT_TAX/100 * sub_total);
+
+        //Print tax amount and grand total. 
+        document.write("Tax amount: %" + PERCENT_TAX + "</br> </br>" );
+        document.write("Grand total: $" + roundandformat(grand_total) + "</br> </br>" );
+
+        document.write("Thank you and have a great day! </br> ");
+
+    </script>
+    
+</body>
+</html>
