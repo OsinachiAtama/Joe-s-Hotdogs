@@ -68,12 +68,12 @@
         //Print subtotals
         document.write("SUBTOTALS BEFORE DISCOUNT: </br>")
         document.write("Subtotal of hot dogs: $" + dogs_total +"</br>" );
-        document.write("Subtotal of french fries: $" + fries_total + "</br>" );
-        document.write("Subtotal  of sodas: $" + soda_total + "</br> </br>" );
+        document.write("Subtotal of french fries: $" + fries_total + "</br>");
+        document.write("Subtotal  of sodas: $" + soda_total + "</br> </br>");
 
         //Find and print total subtotal 
         let sub_total = dogs_total + fries_total + soda_total; 
-        document.write("Total before discount: $" + roundandformat(final_sub_total) + "</br> </br>" );
+        document.write("Total before discount: $" + roundandformat(sub_total) + "</br> </br>" );
 
         //Find discount if price total  is more than 30. 
         if(sub_total >= 30){ 
